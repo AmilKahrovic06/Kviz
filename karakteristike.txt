@@ -1,0 +1,15 @@
+1. Redosled od 15 ponudjenih pitanja uvek treba da bude drugaciji
+2.Svako pitanje ima 4 moguca odgovora od kojih je samo jedan tacan.
+3.Korisniku se postavlja pitanje i na ekranu su prikazana 4 moguca pitanja.
+4.Kada korisnik odabere odgovor, modal ce biti prikazan da pita korisnika da li je siguran u svoj odgovor(njegove opcije su da i ne)
+Ako je izabrao ne modal se zatvara i korisnik ostaje na istom pitanju.
+Ako da, odgovor je potvrdjen.
+5.Pitanja 5,10,15 su oznacena razlicitom bojom u korisnickom interfejsu
+6.Korisnik ima 30 sekundi da odgovori na pitanje, ako to ne uradi, smatrace se da je izabrao pogresan odgovor
+7. Korisnik moze ponovo pokrenuti igru u bilo kom trenutku
+8.Visok rezultat korisnika se cuva na ekranu
+
+BONUS:
+
+9.Cuvajte visok rezultat cak i nakon sto korisnik zatvori svoj pretrazivac ili stranicu,
+kada se vrati visok rezultat ce i dalje ostati.
