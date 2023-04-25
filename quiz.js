@@ -8,15 +8,23 @@ function promesaj(){
 promesaj();
 
   let pitanje=document.querySelector(".question");
-  
-//   questions.answers.forEach(element => {
-//     document.write(questions[element])
-//   });
 
-questions.forEach((question) => {
-    question.answers.forEach((answer) => {
-      const button = document.createElement('button');
-      button.textContent = answer;
-      pitanje.appendChild(button);
-    });
-  });
+
+console.log(questions[0])
+const questionIndex=0;
+console.log(questions[questionIndex].question)
+const tekstPitanja=document.createElement("p");
+tekstPitanja.innerHTML=questions[questionIndex].question;
+   
+
+
+    function answers(){
+        questions[questionIndex].answers.forEach((answer) => {
+            const button = document.createElement('button');
+            button.textContent = answer;
+            pitanje.appendChild(tekstPitanja);
+            pitanje.appendChild(button);
+          });
+    }
+
+    answers();
