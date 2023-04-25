@@ -101,3 +101,8 @@ const questions = [
     correct_answer: 2,
   },
 ];
+
+
+questions.sort(function(a, b) {
+  return Math.random() - 0.5;
+});
