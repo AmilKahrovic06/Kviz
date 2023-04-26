@@ -33,6 +33,11 @@ body{
     
 }
 
+.ans_button:hover{
+    background-color: white;
+    color: #5200FF;
+}
+
 .ans_button{
     background-color: #5200FF;
     color: white;
@@ -43,6 +48,7 @@ body{
     margin: 3px;
     border: none;
     text-align: center;
+    cursor: pointer;
 }
 h3{
 color: white;
