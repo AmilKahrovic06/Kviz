@@ -15,7 +15,8 @@ promesaj();
 console.log(questions[0])
 const questionIndex=0;
 console.log(questions[questionIndex].question)
-const tekstPitanja=document.createElement("p");
+const tekstPitanja=document.createElement("h3");
+tekstPitanja.className = 'question_js'
 tekstPitanja.innerHTML=questions[questionIndex].question;
  
    
@@ -26,6 +27,7 @@ tekstPitanja.innerHTML=questions[questionIndex].question;
 
         questions[questionIndex].answers.forEach((answer) => {
             const button = document.createElement('button');
+            button.className = 'ans_button'
             button.textContent = answer;
             
 

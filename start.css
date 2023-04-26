@@ -1,0 +1,24 @@
+body{
+    background-image: url(./img/fluid-abstract-blue-background-free-vector.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+a{
+    list-style: none;
+    text-decoration: none;
+}
+button{
+    background-color: #000E56;
+    color: aqua;
+    height: 2rem;
+    width: 8rem;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 3px;
+    border: none;
+    
+}
