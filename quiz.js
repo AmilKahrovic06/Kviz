@@ -107,7 +107,19 @@ function disableButton(){
 
         btn.forEach(el=>{
             el.disabled = true;
+            
         })
     }
+
+}
+
+
+function next () {
+ questionIndex++
+ answers.innerHTML=""
+answers()
+
+tekstPitanja.innerHTML = questions[questionIndex].question;
+console.log(questionIndex)
 
 }
