@@ -41,7 +41,7 @@ body{
 .ans_button{
     background-color: #5200FF;
     color: white;
-    height: 2.5rem;
+    height: 3.5rem;
     width: 11rem;
     border-radius: 10px;
     padding: 10px;
@@ -94,7 +94,9 @@ text-align: center;
   }
   
   .modal-content {
-    background-color: #fff;
+    color: white;
+    margin-top: 10%;
+    background-color: red;
     border-radius: 5px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
     padding: 20px;
@@ -109,6 +111,7 @@ text-align: center;
   .modal-buttons {
     display: flex;
     justify-content: center;
+    
   }
   
   .modal-buttons button {
@@ -118,11 +121,30 @@ text-align: center;
     color: #333;
     cursor: pointer;
     font-size: 18px;
-    margin: 5px;
-    padding: 10px 20px;
+    margin: 25px;
+    padding: 10px 50px;
+    box-shadow: 0px 6px 18px -5px rgb(0, 0, 0);
+    
   }
   
   .modal-buttons button:hover {
     background-color: #ccc;
   }
-  
+.next {
+  text-decoration: none;
+  color: white;
+  background: #dc3545;
+  padding: 7px 10px;
+  border-radius: 4px;
+  font-size: 19px;
+}
+
+.next:hover {
+  background: rgb(220 53 69 / 85%);
+}
+
+.next:focus {
+  outline: 3px solid rgb(220 53 69 / 50%);
+
+}
+
