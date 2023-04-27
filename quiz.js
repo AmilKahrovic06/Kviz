@@ -46,6 +46,7 @@ function answers() {
 
       const yesButton = document.createElement("button");
       yesButton.textContent = "Da";
+      yesButton.style.backgroundColor = "green";
 
       yesButton.addEventListener("click", () => {
         console.log("Odgovor potvrđen!");
@@ -69,6 +70,7 @@ function answers() {
 
       const noButton = document.createElement("button");
       noButton.textContent = "Ne";
+      noButton.style.backgroundColor = "rgb(180, 0, 0)";
       noButton.addEventListener("click", () => {
         modal.style.display = "none";
       });
