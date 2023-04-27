@@ -111,14 +111,15 @@ text-align: center;
   .modal-buttons {
     display: flex;
     justify-content: center;
-    
+        color: white;
   }
   
   .modal-buttons button {
-    background-color: #f0f0f0;
+    background-color: blue;
+        color: white;
     border: none;
     border-radius: 5px;
-    color: #333;
+
     cursor: pointer;
     font-size: 18px;
     margin: 25px;
@@ -129,6 +130,8 @@ text-align: center;
   
   .modal-buttons button:hover {
     background-color: #ccc;
+    color: black;
+    
   }
 .next {
   text-decoration: none;
