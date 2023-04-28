@@ -115,10 +115,13 @@ function next() {
       if (questionIndex < questions.length) {
         prikaziPitanje();
       } else {
-        pitanje.innerHTML =
-          "Kviz je zavrsen! Zavrsili ste sva pitanja! Svaka cast!";
+        pitanje.innerText =
+        "Kviz je zavrsen! Zavrsili ste sva pitanja! Svaka cast!";
+        pitanje.style.color = 'white'
         odgovori.innerHTML = "";
         document.querySelector(".next").style.display = "none";
+        
+        
       }
     } else {
       pitanje.innerHTML =
