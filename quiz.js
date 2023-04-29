@@ -2,6 +2,9 @@ console.log(questions);
 let odgovorio = false;
 let tacan = false;
 
+var ukupnoPitanja = questions.length;
+var trenutnoPitanje = 0;
+
 function promesaj() {
   questions.sort(function (a, b) {
     return Math.random() - 0.5;
@@ -19,6 +22,11 @@ tekstPitanja.className = "question_js";
 tekstPitanja.innerHTML = questions[questionIndex].question;
 
 function answers() {
+  console.log(
+    "Tacan odgovor:",
+    questions[questionIndex].correct_answer + 1,
+    ". odgovor."
+  );
   pitanje.appendChild(tekstPitanja);
 
   questions[questionIndex].answers.forEach((answer) => {
@@ -38,20 +46,20 @@ function answers() {
 
       const modalText = document.createElement("p");
       modalText.style.fontSize = "30px";
-      modalText.textContent = "Jeste li sigurni da je ovo vas konacan odgovor?";
+      modalText.textContent = "Are you sure this is your final answer?";
       modalContent.appendChild(modalText);
 
       const modalButtons = document.createElement("div");
       modalButtons.className = "modal-buttons";
 
       const yesButton = document.createElement("button");
-      yesButton.textContent = "Da";
+      yesButton.textContent = "Yes";
       yesButton.style.backgroundColor = "green";
 
       yesButton.addEventListener("click", () => {
         console.log("Odgovor potvrđen!");
         let index = questions[questionIndex].answers.indexOf(button.innerText);
-        console.log(index);
+        console.log("Odgovoreno:", index + 1);
 
         if (index === questions[questionIndex].correct_answer) {
           console.log("Tacan odgovor");
@@ -69,7 +77,7 @@ function answers() {
       });
 
       const noButton = document.createElement("button");
-      noButton.textContent = "Ne";
+      noButton.textContent = "No";
       noButton.style.backgroundColor = "rgb(180, 0, 0)";
       noButton.addEventListener("click", () => {
         modal.style.display = "none";
@@ -112,25 +120,45 @@ function next() {
   if (odgovorio) {
     if (tacan) {
       questionIndex++;
+      trenutnoPitanje++;
+
       if (questionIndex < questions.length) {
         prikaziPitanje();
+        console.log(trenutnoPitanje);
+        var progressBar = document.querySelector(".progress-bar");
+        var progressPercent = (trenutnoPitanje / ukupnoPitanja) * 100;
+        progressBar.style.width = progressPercent + "%";
+        progressBar.style.transition = "0.7s cubic-bezier(.9,-0.55,.15,.64)";
       } else {
         pitanje.innerText =
-        "Kviz je zavrsen! Zavrsili ste sva pitanja! Svaka cast!";
-        pitanje.style.color = 'white'
+          "The quiz is over! You have completed all the questions! Congratulations!";
+        pitanje.style.color = "white";
         odgovori.innerHTML = "";
         document.querySelector(".next").style.display = "none";
-        
-        
+        var progressBar = document.querySelector(".progress-bar");
+        var progressPercent = (trenutnoPitanje / ukupnoPitanja) * 100;
+        progressBar.style.width = progressPercent + "%";
+        progressBar.style.transition = "0.7s cubic-bezier(.9,-0.55,.15,.64)";
       }
     } else {
       pitanje.innerHTML =
-        "Kviz je zavrsen! Niste odgovorili tacno. Molimo pokrenite igru ispocetka";
+        "The quiz is over! You did not answer correctly. Please restart the game";
       pitanje.style.color = "white";
       pitanje.style.fontSize = "20px";
       pitanje.style.padding = "20px";
       odgovori.innerHTML = "";
       document.querySelector(".next").style.display = "none";
+
+      let restartGame = document.createElement("button");
+      restartGame.innerHTML = "Restart";
+      restartGame.style.color = "red";
+      restartGame.style.fontSize = "20px";
+      restartGame.style.padding = "20px";
+      restartGame.style.borderRadius = "10px";
+      restartGame.onclick = () => {
+        window.location.reload();
+      };
+      odgovori.appendChild(restartGame);
     }
   } else {
     const modal = document.createElement("div");
@@ -138,7 +166,7 @@ function next() {
     const modalContent = document.createElement("div");
     modalContent.className = "modal-content";
     const modalText = document.createElement("p");
-    modalText.textContent = "Molimo vas, odgovorite na pitanje.";
+    modalText.textContent = "Please answer the question.";
     modalContent.appendChild(modalText);
     const modalButton = document.createElement("button");
     modalButton.style.padding = "10px 20px 10px 20px";
