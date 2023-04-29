@@ -114,6 +114,7 @@ function answers() {
         }
         modal.style.display = "none";
         odgovorio = true;
+        disableButton();
       });
 
       const noButton = document.createElement("button");
