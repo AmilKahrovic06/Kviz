@@ -4,12 +4,39 @@ let tacan = false;
 
 var ukupnoPitanja = questions.length;
 var trenutnoPitanje = 0;
+let timeLeft = 30;
+let timerId;
 
 function promesaj() {
   questions.sort(function (a, b) {
     return Math.random() - 0.5;
   });
 }
+
+function kreirajDugmeRestart() {
+  let restartGame = document.createElement("button");
+  restartGame.innerHTML = "Restart";
+  restartGame.style.color = "red";
+  restartGame.style.fontSize = "20px";
+  restartGame.style.padding = "20px";
+  restartGame.style.borderRadius = "10px";
+  restartGame.style.cursor = "pointer";
+  restartGame.style.position = "fixed";
+  restartGame.style.bottom = "70px";
+  restartGame.style.left = "100px";
+  restartGame.onclick = () => {
+    window.location.reload();
+  };
+  odgovori.appendChild(restartGame);
+}
+function promeniBojuPozadine() {
+  if (questionIndex == 5 || questionIndex == 10 || questionIndex == 15) {
+    pitanje.style.backgroundColor = "orange";
+  } else {
+    pitanje.style.backgroundColor = "black";
+  }
+}
+
 promesaj();
 
 let odgovori = document.querySelector(".answers");
@@ -20,8 +47,23 @@ let questionIndex = 0;
 const tekstPitanja = document.createElement("h3");
 tekstPitanja.className = "question_js";
 tekstPitanja.innerHTML = questions[questionIndex].question;
+function startTimer() {
+  timerId = setInterval(() => {
+    timeLeft--;
+
+    document.getElementById("time").textContent = timeLeft;
+    if (timeLeft === 0) {
+      clearInterval(timerId);
+      disableButton();
+      document.getElementById("time").textContent = 0;
+    }
+  }, 1000);
+}
 
 function answers() {
+  promeniBojuPozadine();
+  kreirajDugmeRestart();
+  startTimer();
   console.log(
     "Tacan odgovor:",
     questions[questionIndex].correct_answer + 1,
@@ -30,7 +72,7 @@ function answers() {
   pitanje.appendChild(tekstPitanja);
 
   questions[questionIndex].answers.forEach((answer) => {
-    console.log(answer);
+    // console.log(answer);
 
     const button = document.createElement("button");
     button.className = "ans_button";
@@ -70,10 +112,8 @@ function answers() {
           button.style.backgroundColor = "red";
           tacan = false;
         }
-
         modal.style.display = "none";
         odgovorio = true;
-        disableButton();
       });
 
       const noButton = document.createElement("button");
@@ -90,16 +130,17 @@ function answers() {
 
       modal.style.display = "block";
     });
-
     odgovori.appendChild(button);
   });
 }
 
 function prikaziPitanje() {
+  clearInterval(timerId);
+  timeLeft = 30;
   odgovorio = false;
   tacan = false;
   odgovori.innerHTML = "";
-  console.log(questionIndex);
+  console.log("Indeks pitanja:", questionIndex);
   tekstPitanja.innerHTML = questions[questionIndex].question;
 
   answers();
@@ -109,11 +150,10 @@ prikaziPitanje();
 
 function disableButton() {
   const btn = document.querySelectorAll(".ans_button");
-  if (odgovorio) {
-    btn.forEach((el) => {
-      el.disabled = true;
-    });
-  }
+
+  btn.forEach((el) => {
+    el.disabled = true;
+  });
 }
 
 function next() {
@@ -125,6 +165,7 @@ function next() {
       if (questionIndex < questions.length) {
         prikaziPitanje();
         console.log(trenutnoPitanje);
+
         var progressBar = document.querySelector(".progress-bar");
         var progressPercent = (trenutnoPitanje / ukupnoPitanja) * 100;
         progressBar.style.width = progressPercent + "%";
@@ -132,6 +173,8 @@ function next() {
       } else {
         pitanje.innerText =
           "The quiz is over! You have completed all the questions! Congratulations!";
+        clearInterval(timerId);
+        document.getElementById("time").textContent = 0;
         pitanje.style.color = "white";
         odgovori.innerHTML = "";
         document.querySelector(".next").style.display = "none";
@@ -139,26 +182,19 @@ function next() {
         var progressPercent = (trenutnoPitanje / ukupnoPitanja) * 100;
         progressBar.style.width = progressPercent + "%";
         progressBar.style.transition = "0.7s cubic-bezier(.9,-0.55,.15,.64)";
+        kreirajDugmeRestart();
       }
     } else {
       pitanje.innerHTML =
         "The quiz is over! You did not answer correctly. Please restart the game";
+      clearInterval(timerId);
+      document.getElementById("time").textContent = 0;
       pitanje.style.color = "white";
       pitanje.style.fontSize = "20px";
       pitanje.style.padding = "20px";
       odgovori.innerHTML = "";
       document.querySelector(".next").style.display = "none";
-
-      let restartGame = document.createElement("button");
-      restartGame.innerHTML = "Restart";
-      restartGame.style.color = "red";
-      restartGame.style.fontSize = "20px";
-      restartGame.style.padding = "20px";
-      restartGame.style.borderRadius = "10px";
-      restartGame.onclick = () => {
-        window.location.reload();
-      };
-      odgovori.appendChild(restartGame);
+      kreirajDugmeRestart();
     }
   } else {
     const modal = document.createElement("div");
