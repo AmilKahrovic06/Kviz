@@ -161,15 +161,16 @@ text-decoration: underline;
   color: white;
   background: #008000;
   padding: 7px 10px;
-  border-radius: 4px;
+  border-radius: 10px;
   font-size: 19px;
   cursor: pointer;
+  border: none;
   
   right: 10px;
 }
 
 .next:hover {
-  background: rgb(220 53 69 / 85%);
+  background: #5200FF;
 }
 
 .next:focus {
@@ -201,7 +202,7 @@ margin-top: 20px;
 }
 
 .Restart{
-  color: red;
+  color: white;
   background: #dc3545;
 
   font-size: 20px;

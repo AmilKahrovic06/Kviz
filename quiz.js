@@ -18,7 +18,7 @@ function promesaj() {
 function kreirajDugmeRestart() {
   let restartGame = document.createElement("button");
   restartGame.className = 'Restart'
-  restartGame.innerHTML = "Restart";
+  restartGame.innerHTML = `Restart <i class="fa-solid fa-rotate-right"></i>`;
   restartGame.onclick = () => {
     window.location.reload();
   };
