@@ -75,7 +75,7 @@ text-decoration: underline;
     box-shadow: rgba(45, 35, 66, .4) 0 2px 4px, rgba(45, 35, 66, .3) 0 7px 13px -3px, rgba(58, 65, 111, .5) 0 -3px 0 inset;
     box-sizing: border-box;
     color: #fff;
-    cursor: pointer;
+    /* cursor: pointer; */
     display: inline-flex;
     /* font-family: "JetBrains Mono", monospace; */
     height: 48px;
@@ -200,4 +200,17 @@ margin-top: 20px;
   text-shadow: 1px 1px 2px black;
  margin-left: auto;
  margin-right: auto;
+}
+
+
+@media only screen and (max-width: 600px){
+  .ans_button{
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+  }
+
+  .question{
+    width: 350px;
+  }
 }
