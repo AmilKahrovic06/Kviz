@@ -6,7 +6,7 @@ var ukupnoPitanja = questions.length;
 var trenutnoPitanje = 0;
 let timeLeft = 30;
 let timerId;
-
+let points = 0
 function promesaj() {
   questions.sort(function (a, b) {
     return Math.random() - 0.5;
@@ -162,6 +162,7 @@ function next() {
     if (tacan) {
       questionIndex++;
       trenutnoPitanje++;
+      points = points+5
 
       if (questionIndex < questions.length) {
         prikaziPitanje();
@@ -184,10 +185,12 @@ function next() {
         progressBar.style.width = progressPercent + "%";
         progressBar.style.transition = "0.7s cubic-bezier(.9,-0.55,.15,.64)";
         kreirajDugmeRestart();
+        
       }
     } else {
       pitanje.innerHTML =
-        "The quiz is over! You did not answer correctly. Please restart the game";
+        `The quiz is over! You did not answer correctly. Please restart the game
+        Osvojii ste ${points} bodova od mogucih 75`;
       clearInterval(timerId);
       document.getElementById("time").textContent = 0;
       pitanje.style.color = "white";
@@ -196,6 +199,7 @@ function next() {
       odgovori.innerHTML = "";
       document.querySelector(".next").style.display = "none";
       kreirajDugmeRestart();
+     
     }
   } else {
     const modal = document.createElement("div");
