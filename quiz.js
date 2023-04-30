@@ -1,4 +1,6 @@
 console.log(questions);
+let div = document.querySelector('.restart_next')
+console.log(div)
 let odgovorio = false;
 let tacan = false;
 
@@ -15,19 +17,12 @@ function promesaj() {
 
 function kreirajDugmeRestart() {
   let restartGame = document.createElement("button");
+  restartGame.className = 'Restart'
   restartGame.innerHTML = "Restart";
-  restartGame.style.color = "red";
-  restartGame.style.fontSize = "20px";
-  restartGame.style.padding = "20px";
-  restartGame.style.borderRadius = "10px";
-  restartGame.style.cursor = "pointer";
-  restartGame.style.position = "fixed";
-  restartGame.style.bottom = "70px";
-  restartGame.style.left = "100px";
   restartGame.onclick = () => {
     window.location.reload();
   };
-  odgovori.appendChild(restartGame);
+  div.appendChild(restartGame);
 }
 function promeniBojuPozadine() {
   if (questionIndex == 5 || questionIndex == 10 || questionIndex == 15) {
@@ -190,7 +185,7 @@ function next() {
     } else {
       pitanje.innerHTML =
         `The quiz is over! You did not answer correctly. Please restart the game
-        Osvojii ste ${points} bodova od mogucih 75`;
+        You won ${points}points out of 75`;
       clearInterval(timerId);
       document.getElementById("time").textContent = 0;
       pitanje.style.color = "white";
@@ -201,14 +196,13 @@ function next() {
       kreirajDugmeRestart();
       //----------create session to save best score----------------
       
-      var bestScore = sessionStorage.getItem("BestScore");
+      var bestScore = localStorage.getItem("BestScore");
       if (!bestScore || parseInt(bestScore) < points) {
-        sessionStorage.setItem("BestScore", points);
+        localStorage.setItem("BestScore", points);
       }
       sessionStorage.setItem("Points",points);
       
     }
-    score.innerHTML = `Your best score is ${sessionStorage.getItem('BestScore')}`
   } else {
     const modal = document.createElement("div");
     modal.className = "modal";

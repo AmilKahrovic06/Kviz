@@ -105,4 +105,4 @@ const questions = [
 
 
 let score = document.querySelector('.best_score')
-score.innerText = `Your best score: ${sessionStorage.getItem('BestScore')}`
+score.innerText = `Your best score : ${localStorage.getItem('BestScore')} points`

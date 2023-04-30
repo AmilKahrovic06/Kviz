@@ -48,3 +48,35 @@ img{
 h2{
    color: white;
 }
+
+footer{
+    margin-top:  100px;
+}
+
+small{
+    color: rgb(255, 255, 255);
+    
+}
+
+@media only screen and (max-width: 600px){
+    *{
+        margin: 0;
+        box-sizing: border-box;
+    }
+    body{
+        height: 100vh;
+    }
+    footer{
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        margin-bottom: 10px;
+        
+        height: 400px;
+        width: 100%;
+    }
+    small{
+        font-size: 0.8rem;
+        
+    }
+}

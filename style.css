@@ -33,11 +33,7 @@ body{
     
     
 }
-.next{
-  position: fixed;
-  bottom: 50px;
-  right: 150px;
-}
+
 .ans_button:hover{
     background-color: white;
     color: #5200FF;
@@ -163,11 +159,13 @@ text-decoration: underline;
 .next {
   text-decoration: none;
   color: white;
-  background: #dc3545;
+  background: #008000;
   padding: 7px 10px;
   border-radius: 4px;
   font-size: 19px;
   cursor: pointer;
+  
+  right: 10px;
 }
 
 .next:hover {
@@ -202,6 +200,28 @@ margin-top: 20px;
  margin-right: auto;
 }
 
+.Restart{
+  color: red;
+  background: #dc3545;
+
+  font-size: 20px;
+  padding: 7px 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  /* bottom: 70px;
+  left: 100px; */
+}
+.restart_next{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row-reverse;
+
+  margin-top: 50px;
+  height:200px;
+  width: 500px;
+
+}
 
 @media only screen and (max-width: 600px){
   .ans_button{
