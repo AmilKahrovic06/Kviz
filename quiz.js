@@ -6,7 +6,7 @@ var ukupnoPitanja = questions.length;
 var trenutnoPitanje = 0;
 let timeLeft = 30;
 let timerId;
-let points = 0
+var points = 0
 function promesaj() {
   questions.sort(function (a, b) {
     return Math.random() - 0.5;
@@ -199,8 +199,16 @@ function next() {
       odgovori.innerHTML = "";
       document.querySelector(".next").style.display = "none";
       kreirajDugmeRestart();
-     
+      //----------create session to save best score----------------
+      
+      var bestScore = sessionStorage.getItem("BestScore");
+      if (!bestScore || parseInt(bestScore) < points) {
+        sessionStorage.setItem("BestScore", points);
+      }
+      sessionStorage.setItem("Points",points);
+      
     }
+    score.innerHTML = `Your best score is ${sessionStorage.getItem('BestScore')}`
   } else {
     const modal = document.createElement("div");
     modal.className = "modal";
@@ -226,3 +234,4 @@ function next() {
     modal.style.display = "block";
   }
 }
+

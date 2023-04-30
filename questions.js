@@ -101,3 +101,8 @@ const questions = [
     correct_answer: 2,
   },
 ];
+
+
+
+let score = document.querySelector('.best_score')
+score.innerText = `Your best score: ${sessionStorage.getItem('BestScore')}`
