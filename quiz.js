@@ -3,6 +3,9 @@ let div = document.querySelector('.restart_next')
 console.log(div)
 let odgovorio = false;
 let tacan = false;
+let result = document.querySelector('.result')
+let div_sledeci = document.querySelector('.sledeci')
+let flex = document.querySelector('.flex')
 
 var ukupnoPitanja = questions.length;
 var trenutnoPitanje = 0;
@@ -136,6 +139,7 @@ function prikaziPitanje() {
   odgovorio = false;
   tacan = false;
   odgovori.innerHTML = "";
+  div.innerHTML = ''
   console.log("Indeks pitanja:", questionIndex);
   tekstPitanja.innerHTML = questions[questionIndex].question;
 
@@ -175,6 +179,7 @@ function next() {
         pitanje.style.color = "white";
         odgovori.innerHTML = "";
         document.querySelector(".next").style.display = "none";
+        flex.style.justifyContent = 'center';
         var progressBar = document.querySelector(".progress-bar");
         var progressPercent = (trenutnoPitanje / ukupnoPitanja) * 100;
         progressBar.style.width = progressPercent + "%";
@@ -184,14 +189,19 @@ function next() {
       }
     } else {
       pitanje.innerHTML =
-        `The quiz is over! You did not answer correctly. Please restart the game
-        You won ${points}points out of 75`;
+        `The quiz is over! You did not answer correctly. Please restart the game.`;
+      let h3 = document.createElement('h3')
+      h3.style.color = 'white'
+      h3.textContent = `You won ${points} points out of 75`
+      result.appendChild(h3)
       clearInterval(timerId);
       document.getElementById("time").textContent = 0;
       pitanje.style.color = "white";
       pitanje.style.fontSize = "20px";
       pitanje.style.padding = "20px";
       odgovori.innerHTML = "";
+      div.innerHTML = ''
+      div_sledeci.style.display = 'none'
       document.querySelector(".next").style.display = "none";
       kreirajDugmeRestart();
       //----------create session to save best score----------------
