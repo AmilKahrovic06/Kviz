@@ -179,13 +179,11 @@ function next() {
         pitanje.style.color = "white";
         odgovori.innerHTML = "";
         document.querySelector(".next").style.display = "none";
-        flex.style.justifyContent = 'center';
         var progressBar = document.querySelector(".progress-bar");
         var progressPercent = (trenutnoPitanje / ukupnoPitanja) * 100;
         progressBar.style.width = progressPercent + "%";
         progressBar.style.transition = "0.7s cubic-bezier(.9,-0.55,.15,.64)";
-        kreirajDugmeRestart();
-        
+        kreirajDugmeRestart();  
       }
     } else {
       pitanje.innerHTML =

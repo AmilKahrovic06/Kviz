@@ -202,7 +202,7 @@ margin-top: 20px;
 
 .Restart{
   color: white;
-  background: #dc3545;
+  background: #FF0000;
 
   font-size: 20px;
   padding: 7px 10px;
@@ -243,6 +243,7 @@ margin-top: 20px;
     flex-direction: column;
     width: 300px;
   }
+  
 
   .question{
     width: 350px;
@@ -250,5 +251,11 @@ margin-top: 20px;
 
   .flex{
     width: 300px;
+  }
+
+  .modal-content{
+   
+    margin-top: 330px;
+   
   }
 }
