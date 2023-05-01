@@ -175,9 +175,12 @@ function next() {
       } else {
         pitanje.innerText =
           "The quiz is over! You have completed all the questions! Congratulations!";
+        pitanje.style.textAlign = "center";
+        pitanje.style.fontSize = "20px";
         clearInterval(timerId);
         document.getElementById("time").textContent = 0;
         pitanje.style.color = "white";
+        pitanje.style.padding = "20px";
         odgovori.innerHTML = "";
         document.querySelector(".next").style.display = "none";
         var progressBar = document.querySelector(".progress-bar");
@@ -186,7 +189,7 @@ function next() {
         progressBar.style.transition = "0.7s cubic-bezier(.9,-0.55,.15,.64)";
       }
     } else {
-      pitanje.innerHTML = `The quiz is over! You did not answer correctly. Please restart the game.`;
+      pitanje.innerText = `The quiz is over! You did not answer correctly. Please restart the game.`;
       let h3 = document.createElement("h3");
       h3.style.color = "white";
       h3.textContent = `You won ${points} points out of 75`;
