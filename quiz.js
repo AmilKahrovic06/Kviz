@@ -1,17 +1,17 @@
 console.log(questions);
-let div = document.querySelector('.restart_next')
-console.log(div)
+let div = document.querySelector(".restart_next");
+console.log(div);
 let odgovorio = false;
 let tacan = false;
-let result = document.querySelector('.result')
-let div_sledeci = document.querySelector('.sledeci')
-let flex = document.querySelector('.flex')
+let result = document.querySelector(".result");
+let div_sledeci = document.querySelector(".sledeci");
+let flex = document.querySelector(".flex");
 
 var ukupnoPitanja = questions.length;
 var trenutnoPitanje = 0;
 let timeLeft = 30;
 let timerId;
-var points = 0
+var points = 0;
 function promesaj() {
   questions.sort(function (a, b) {
     return Math.random() - 0.5;
@@ -20,7 +20,7 @@ function promesaj() {
 
 function kreirajDugmeRestart() {
   let restartGame = document.createElement("button");
-  restartGame.className = 'Restart'
+  restartGame.className = "Restart";
   restartGame.innerHTML = `Restart <i class="fa-solid fa-rotate-right"></i>`;
   restartGame.onclick = () => {
     window.location = "index.html";
@@ -140,7 +140,7 @@ function prikaziPitanje() {
   odgovorio = false;
   tacan = false;
   odgovori.innerHTML = "";
-  div.innerHTML = ''
+  div.innerHTML = "";
   console.log("Indeks pitanja:", questionIndex);
   tekstPitanja.innerHTML = questions[questionIndex].question;
 
@@ -162,7 +162,7 @@ function next() {
     if (tacan) {
       questionIndex++;
       trenutnoPitanje++;
-      points = points+5
+      points = points + 5;
 
       if (questionIndex < questions.length) {
         prikaziPitanje();
@@ -184,33 +184,30 @@ function next() {
         var progressPercent = (trenutnoPitanje / ukupnoPitanja) * 100;
         progressBar.style.width = progressPercent + "%";
         progressBar.style.transition = "0.7s cubic-bezier(.9,-0.55,.15,.64)";
-        kreirajDugmeRestart();  
       }
     } else {
-      pitanje.innerHTML =
-        `The quiz is over! You did not answer correctly. Please restart the game.`;
-      let h3 = document.createElement('h3')
-      h3.style.color = 'white'
-      h3.textContent = `You won ${points} points out of 75`
-      result.appendChild(h3)
+      pitanje.innerHTML = `The quiz is over! You did not answer correctly. Please restart the game.`;
+      let h3 = document.createElement("h3");
+      h3.style.color = "white";
+      h3.textContent = `You won ${points} points out of 75`;
+      result.appendChild(h3);
       clearInterval(timerId);
       document.getElementById("time").textContent = 0;
       pitanje.style.color = "white";
       pitanje.style.fontSize = "20px";
       pitanje.style.padding = "20px";
       odgovori.innerHTML = "";
-      div.innerHTML = ''
-      div_sledeci.style.display = 'none'
+      div.innerHTML = "";
+      div_sledeci.style.display = "none";
       document.querySelector(".next").style.display = "none";
       kreirajDugmeRestart();
       //----------create session to save best score----------------
-      
+
       var bestScore = localStorage.getItem("BestScore");
       if (!bestScore || parseInt(bestScore) < points) {
         localStorage.setItem("BestScore", points);
       }
-      sessionStorage.setItem("Points",points);
-      
+      sessionStorage.setItem("Points", points);
     }
   } else {
     const modal = document.createElement("div");
@@ -237,4 +234,3 @@ function next() {
     modal.style.display = "block";
   }
 }
-
