@@ -23,7 +23,8 @@ function kreirajDugmeRestart() {
   restartGame.className = 'Restart'
   restartGame.innerHTML = `Restart <i class="fa-solid fa-rotate-right"></i>`;
   restartGame.onclick = () => {
-    window.location.reload();
+    window.location = "start.html";
+    // window.location.reload();
   };
   div.appendChild(restartGame);
 }

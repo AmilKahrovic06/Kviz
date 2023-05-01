@@ -105,4 +105,8 @@ const questions = [
 
 
 let score = document.querySelector('.best_score')
-score.innerText = `Your best score : ${localStorage.getItem('BestScore')} points`
+if (localStorage.getItem('BestScore') === null) {
+  score.innerText = '0'
+}else{
+  score.innerText = `Your best score : ${localStorage.getItem('BestScore')} points`
+}
