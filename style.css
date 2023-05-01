@@ -202,9 +202,6 @@ h3 {
   border-radius: 10px;
   cursor: pointer;
   border: none;
-  position: relative;
-  left: 150%;
-
 }
 
 .flex {
