@@ -1,4 +1,4 @@
-body{
+body {
     background-image: url(./img/fluid-abstract-blue-background-free-vector.jpg);
     background-size: cover;
     background-repeat: no-repeat;
@@ -9,7 +9,7 @@ body{
     font-family: 'Comme', sans-serif;
 }
 
-a{
+a {
     list-style: none;
     text-decoration: none;
     color: white;
@@ -24,7 +24,7 @@ a{
     color: #000E56;
 }
 
-.start_button{
+.start_button {
     background-color: #000E56;
     height: 3rem;
     width: 10rem;
@@ -34,52 +34,54 @@ a{
     border: none;
     text-decoration: none;
     cursor: pointer;
-
-    
 }
 
-img{
+img {
     height: 250px;
     width: 270px;
     margin-top: 30px;
     margin-bottom: 40px;
 }
 
-h2{
-   color: white;
+h2 {
+    color: white;
 }
 
-footer{
-    margin-top:  100px;
+footer {
+    margin-top: 100px;
 }
 
-small{
+small {
     color: rgb(255, 255, 255);
-    
+
 }
 
-@media only screen and (max-width: 600px){
-    *{
+@media only screen and (max-width: 600px) {
+    * {
         margin: 0;
         box-sizing: border-box;
     }
-    body{
+
+    body {
         height: 100vh;
     }
-    footer{
+
+    footer {
         display: flex;
         justify-content: center;
         align-items: flex-end;
         margin-bottom: 10px;
-        
+
         height: 400px;
         width: 100%;
     }
-    small{
+
+    small {
         font-size: 0.6rem;
-        
+
     }
-    .best_score{
+
+    .best_score {
         margin-top: 30px;
     }
 }
