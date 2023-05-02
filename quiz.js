@@ -163,6 +163,7 @@ function next() {
       questionIndex++;
       trenutnoPitanje++;
       points = points + 5;
+      var bestScore = localStorage.getItem("BestScore");
 
       if (questionIndex < questions.length) {
         prikaziPitanje();
@@ -175,6 +176,10 @@ function next() {
       } else {
         pitanje.innerText =
           "The quiz is over! You have completed all the questions! Congratulations!";
+          let h3 = document.createElement("h3");
+      h3.style.color = "white";
+      h3.textContent = `You won ${points} points out of 75`;
+      result.appendChild(h3);
         pitanje.style.textAlign = "center";
         pitanje.style.fontSize = "20px";
         clearInterval(timerId);
@@ -187,6 +192,11 @@ function next() {
         var progressPercent = (trenutnoPitanje / ukupnoPitanja) * 100;
         progressBar.style.width = progressPercent + "%";
         progressBar.style.transition = "0.7s cubic-bezier(.9,-0.55,.15,.64)";
+        if (!bestScore || parseInt(bestScore) < points) {
+          localStorage.setItem("BestScore", points);
+        }
+        sessionStorage.setItem("Points", points);
+        
       }
     } else {
       pitanje.innerText = `The quiz is over! You did not answer correctly. Please restart the game.`;
@@ -206,7 +216,7 @@ function next() {
       kreirajDugmeRestart();
       //----------create session to save best score----------------
 
-      var bestScore = localStorage.getItem("BestScore");
+      
       if (!bestScore || parseInt(bestScore) < points) {
         localStorage.setItem("BestScore", points);
       }
